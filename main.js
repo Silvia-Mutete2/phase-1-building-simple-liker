@@ -3,8 +3,7 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-const like = document.querySelectorAll(".like-glyph")
-const errMessage =document.getElementById("modal")
+const articleHearts = document.querySelectorAll(".like-glyph")
 
 for (const like of likes){
   like.addEventListener("click", () => {
@@ -18,14 +17,18 @@ for (const like of likes){
         like.innerText =EMPTY_HEART
       }
     })
-    .catch((error) => {
-      errMessage.className = ''
-      errMessage.innerText = error
-      setTimeout(()=> errMessage.className="hidden", 3000)
-    })
-  })
-}
+    .catch(function(error) {
+      const modal = document.getElementById("modal");
+      modal.className = "";
+      modal.innerText = error;
+      setTimeout(() =>  modal.className = "hidden", 3000);
+    });
+})
 
+for (const glyph of articleHearts){
+  glyph.addEventListener("click", likeCallback);
+}
+}
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
